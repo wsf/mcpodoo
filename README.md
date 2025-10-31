@@ -1,21 +1,19 @@
+# odoo-helpdesk-mcp (Railway)
 
-# odoo-helpdesk-mcp (Vercel)
+Servidor MCP real (socket) listo para Railway.
 
-MCP server listo para Vercel. Usa env vars ODOO_* y MCP_API_KEY.
-
-## Variables de entorno
-- ODOO_URL (https://tu-odoo.com)
+## Variables
+- ODOO_URL (https://mi-odoo.com)
 - ODOO_DB
 - ODOO_USER
 - ODOO_PASS
-- MCP_API_KEY
+- ODOO_ALLOW_INSECURE_SSL=true  # solo si usas certificado self-signed
 
-## Endpoints
-- GET /           -> health
-- GET /api/mcp/meta   -> metadata (x-api-key)
-- POST /api/mcp/run   -> ejecutar tools (x-api-key)
+Railway define PORT automáticamente.
 
-## Ejemplos
-curl https://<app>.vercel.app/api/mcp/meta -H "x-api-key: $MCP_API_KEY"
+## Deploy
+- Importá a Railway
+- Seteá Variables
+- Deploy
 
-curl -X POST https://<app>.vercel.app/api/mcp/run       -H "x-api-key: $MCP_API_KEY" -H "Content-Type: application/json"       -d '{"tool":"add","args":{"a":2,"b":3}}'
+El servidor quedará escuchando en 0.0.0.0:$PORT

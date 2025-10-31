@@ -1,0 +1,64 @@
+{
+  "name": "odoo-helpdesk-mcp",
+  "description": "MCP Server exposing Odoo Helpdesk chatter tools (read/search/post) via HTTP for LLM agents.",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "get_ticket_chatter",
+      "description": "Return chatter messages for a given helpdesk.ticket",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "integer"
+          },
+          "limit": {
+            "type": "integer",
+            "default": 50
+          }
+        },
+        "required": [
+          "ticket_id"
+        ]
+      }
+    },
+    {
+      "name": "search_chatter",
+      "description": "Search chatter messages for a given ticket using a text query (ILIKE).",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "integer"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id",
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "post_message",
+      "description": "Post a message to the chatter of a helpdesk.ticket.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "ticket_id": {
+            "type": "integer"
+          },
+          "body": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id",
+          "body"
+        ]
+      }
+    }
+  ]
+}

@@ -1,63 +1,77 @@
 {
   "name": "odoo-helpdesk-mcp",
-  "description": "MCP Server exposing Odoo Helpdesk chatter tools (read/search/post) via HTTP for LLM agents.",
+  "description": "MCP Server exposing Odoo tools over HTTP (Vercel).",
   "version": "1.0.0",
   "tools": [
     {
-      "name": "get_ticket_chatter",
-      "description": "Return chatter messages for a given helpdesk.ticket",
+      "name": "add",
+      "description": "Suma dos n\u00fameros",
       "input_schema": {
         "type": "object",
         "properties": {
-          "ticket_id": {
+          "a": {
             "type": "integer"
           },
-          "limit": {
-            "type": "integer",
-            "default": 50
+          "b": {
+            "type": "integer"
           }
         },
         "required": [
-          "ticket_id"
+          "a",
+          "b"
         ]
       }
     },
     {
-      "name": "search_chatter",
-      "description": "Search chatter messages for a given ticket using a text query (ILIKE).",
+      "name": "odoo_search",
+      "description": "search_read gen\u00e9rico",
       "input_schema": {
         "type": "object",
         "properties": {
-          "ticket_id": {
-            "type": "integer"
-          },
-          "query": {
+          "model": {
             "type": "string"
+          },
+          "domain": {
+            "type": "array"
+          },
+          "fields": {
+            "type": "array"
           }
         },
         "required": [
-          "ticket_id",
-          "query"
+          "model",
+          "domain",
+          "fields"
         ]
       }
     },
     {
-      "name": "post_message",
-      "description": "Post a message to the chatter of a helpdesk.ticket.",
+      "name": "crear_solicitud_mantenimiento",
+      "description": "Crea maintenance.request",
       "input_schema": {
         "type": "object",
         "properties": {
-          "ticket_id": {
-            "type": "integer"
+          "name": {
+            "type": "string"
           },
-          "body": {
+          "description": {
+            "type": "string"
+          },
+          "request_date": {
             "type": "string"
           }
         },
         "required": [
-          "ticket_id",
-          "body"
+          "name"
         ]
+      }
+    },
+    {
+      "name": "mantenimiento_con_compras",
+      "description": "Solicitudes + compras",
+      "input_schema": {
+        "type": "object",
+        "properties": {}
       }
     }
   ]
